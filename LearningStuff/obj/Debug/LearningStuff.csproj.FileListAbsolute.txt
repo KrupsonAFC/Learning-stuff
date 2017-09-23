@@ -1,0 +1,7 @@
+C:\Projects\Learning-stuff\LearningStuff\bin\Debug\LearningStuff.exe.config
+C:\Projects\Learning-stuff\LearningStuff\bin\Debug\LearningStuff.exe
+C:\Projects\Learning-stuff\LearningStuff\bin\Debug\LearningStuff.pdb
+C:\Projects\Learning-stuff\LearningStuff\obj\Debug\LearningStuff.csprojResolveAssemblyReference.cache
+C:\Projects\Learning-stuff\LearningStuff\obj\Debug\LearningStuff.csproj.CoreCompileInputs.cache
+C:\Projects\Learning-stuff\LearningStuff\obj\Debug\LearningStuff.exe
+C:\Projects\Learning-stuff\LearningStuff\obj\Debug\LearningStuff.pdb
