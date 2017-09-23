@@ -17,7 +17,7 @@ namespace LearningStuff
 
             NewStringDisplayStandardIsSoAwesome();
         }
-
+        
         public static void NewStringDisplayStandardIsSoAwesome()
         {
             int age = 22;
