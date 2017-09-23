@@ -10,6 +10,18 @@ namespace LearningStuff
     {
         static void Main(string[] args)
         {
+            NewStringDisplayStandardIsSoAwesome();
+        }
+
+        public static void NewStringDisplayStandardIsSoAwesome()
+        {
+            int age = 22;
+            var name = "Tomek";
+            string surname = "Krupa";
+
+            var result = $"Siema! Jest {name} {surname} i ma {age} lat.";
+            Console.WriteLine(result);
+            Console.ReadLine();
         }
     }
 }
