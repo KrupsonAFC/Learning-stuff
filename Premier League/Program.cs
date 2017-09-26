@@ -10,9 +10,9 @@ namespace Premier_League
     {
         static void Main(string[] args)
         {
-            DisplayMenu();
-            bool done = false;
-            ConsoleKeyInfo number;
+            DisplayMenu(); 
+            bool done = false; // ciekawostka, bool z urzędu jest false, więc to '=false' niepotrzebne. ale lepiej dac jak nie dac
+            ConsoleKeyInfo number; // tu mnie zakoczyles, dlaczego jakas struktura? a nie po prostu 'char number'?
             do
             {
                 number = Console.ReadKey();
@@ -24,7 +24,7 @@ namespace Premier_League
                         Console.WriteLine("Tu bedzie tabela");
                         break;
                     case '2':
-                        Console.Clear();
+                        Console.Clear(); 
                         done = true;
                         //Console.WriteLine("Tu se bedziesz edytował liste teamow");
                         EditTeamList();
@@ -63,8 +63,8 @@ namespace Premier_League
             Console.WriteLine("1. Dodaj zespół\n" +
                 "2. Edytuj zespół\n" +
                 "3. Usuń zespół\n");
-            bool check = false;
-            ConsoleKeyInfo number;
+            bool check = false; //jak na gorze
+            ConsoleKeyInfo number; // jak na gorze
             do
             {
                 number = Console.ReadKey();
