@@ -12,9 +12,10 @@ namespace Premier_League
         {
             DisplayMenu();
             bool done = false;
+            ConsoleKeyInfo number;
             do
             {
-                ConsoleKeyInfo number = Console.ReadKey();
+                number = Console.ReadKey();
                 switch (number.KeyChar)
                 {
                     case '1':
@@ -25,7 +26,8 @@ namespace Premier_League
                     case '2':
                         Console.Clear();
                         done = true;
-                        Console.WriteLine("Tu se bedziesz edytował liste teamow");
+                        //Console.WriteLine("Tu se bedziesz edytował liste teamow");
+                        EditTeamList();
                         break;
                     case '3':
                         Console.Clear();
@@ -54,6 +56,42 @@ namespace Premier_League
                 "2. Edytuj listę drużyn\n" +
                 "3. Dodaj rezultat spotkania\n" +
                 "4. Edytuj rezultat spotkania\n");
+        }
+
+        public static void EditTeamList()
+        {
+            Console.WriteLine("1. Dodaj zespół\n" +
+                "2. Edytuj zespół\n" +
+                "3. Usuń zespół\n");
+            bool check = false;
+            ConsoleKeyInfo number;
+            do
+            {
+                number = Console.ReadKey();
+                switch (number.KeyChar)
+                {
+                    case '1':
+                        Console.Clear();
+                        check = true;
+                        Console.WriteLine("Dodawanie zespołu");
+                        break;
+                    case '2':
+                        Console.Clear();
+                        check = true;
+                        Console.WriteLine("Edycja zespołu");
+                        break;
+                    case '3':
+                        Console.Clear();
+                        check = true;
+                        Console.WriteLine("Usuwanie zespołu");
+                        break;
+                    default:
+                        Console.WriteLine("\nPodaj poprawny numer kalaputniaku");
+                        break;
+                }
+            }
+            while (!check);
+            Console.ReadLine();
         }
     }
 }
