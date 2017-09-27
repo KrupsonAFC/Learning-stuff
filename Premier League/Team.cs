@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Premier_League
 {
-    class Team
+    public class Team
     {
         public string Name { get; set; }
         public int position { get; set; }

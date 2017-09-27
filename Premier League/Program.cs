@@ -11,7 +11,7 @@ namespace Premier_League
         static void Main(string[] args)
         {
             DisplayMenu();
-            MakeChoice();
+            MakeChoice();            
         }
 
         public static void DisplayMenu()
@@ -56,6 +56,7 @@ namespace Premier_League
                         break;
                     case '0':
                         Console.Clear();
+                        check = true;
                         DisplayMenu();
                         MakeChoice();
                         break;
@@ -111,7 +112,8 @@ namespace Premier_League
                         Console.WriteLine("Tu bedziesz zmieniał wyniki jak cos zjebałes");
                         break;
                     case '0':
-
+                        check = true;
+                        Environment.Exit(1);
                         break;
                     default:
                         Console.WriteLine("\nPodaj poprawny numer kalaputniaku");
