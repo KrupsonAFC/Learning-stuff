@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,14 @@ namespace Premier_League
     {
         static void Main(string[] args)
         {
-            DisplayMenu();
-            MakeChoice();            
+           // DisplayMenu();
+           // MakeChoice();
+            DatabaseService.SaveDatabase();
+            StreamWriter sw = new StreamWriter(DatabaseService.path);
+            sw.WriteLine("I hope it works");
+            sw.Close();
         }
-
+        
         public static void DisplayMenu()
         {            
             List<string> Menu = new List<string>();
