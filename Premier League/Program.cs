@@ -14,21 +14,21 @@ namespace Premier_League
            // DisplayMenu();
            // MakeChoice();
             DatabaseService.SaveDatabase();
-            StreamWriter sw = new StreamWriter(DatabaseService.path);
+            StreamWriter sw = new StreamWriter(DatabaseService.path);  // good
             sw.WriteLine("I hope it works");
             sw.Close();
         }
         
         public static void DisplayMenu()
-        {            
-            List<string> Menu = new List<string>();
-            Menu.Add("1. Wyświetl tabelę");
+        {   
+            List<string> Menu = new List<string>(); //ładne :) jeszcze ładniej byłoby przeniesc to do konstruktora, jak nizej:
+            Menu.Add("1. Wyświetl tabelę");        // new List<string>() { "cos", "cos2", "asda" };
             Menu.Add("2. Edytuj listę drużyn");
             Menu.Add("3. Dodaj rezultat spotkania");
             Menu.Add("4. Edytuj rezultat spotkania");
             Menu.Add("0. Zamknij program");
 
-            for (int i = 0; i < Menu.Count; i++)
+            for (int i = 0; i < Menu.Count; i++) // poczytaj o foreach i przerób
             {
                 Console.WriteLine(Menu[i]);
             }
