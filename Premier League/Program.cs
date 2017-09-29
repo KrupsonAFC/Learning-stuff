@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,34 +12,31 @@ namespace Premier_League
     {
         static void Main(string[] args)
         {
-           // DisplayMenu();
-           // MakeChoice();
-            DatabaseService.SaveDatabase();
-            StreamWriter sw = new StreamWriter(DatabaseService.path);  // good
-            sw.WriteLine("I hope it works");
-            sw.Close();
+            DisplayMenu();
+            MakeChoice();
+            DatabaseService.SaveDatabase();            
         }
         
         public static void DisplayMenu()
-        {   
-            List<string> Menu = new List<string>(); //ładne :) jeszcze ładniej byłoby przeniesc to do konstruktora, jak nizej:
-            Menu.Add("1. Wyświetl tabelę");        // new List<string>() { "cos", "cos2", "asda" };
-            Menu.Add("2. Edytuj listę drużyn");
-            Menu.Add("3. Dodaj rezultat spotkania");
-            Menu.Add("4. Edytuj rezultat spotkania");
-            Menu.Add("0. Zamknij program");
-
-            for (int i = 0; i < Menu.Count; i++) // poczytaj o foreach i przerób
+        {
+            List<string> Menu = new List<string>()
+            { "1. Wyświetl tabelę",
+                "2. Edytuj listę drużyn",
+                "3. Dodaj rezultat spotkania",
+                "4. Edytuj rezultat spotkania",
+                "0. Zamknij program"};
+           
+            foreach(var record in Menu)
             {
-                Console.WriteLine(Menu[i]);
+                Console.WriteLine(record);
             }
         }
 
         public static void EditTeamList()
         {
             DisplayEditionMenu();
-            bool check = false; //jak na gorze
-            ConsoleKeyInfo number; // jak na gorze
+            bool check = false; 
+            ConsoleKeyInfo number; 
             do
             {
                 number = Console.ReadKey();
@@ -47,7 +45,10 @@ namespace Premier_League
                     case '1':
                         Console.Clear();
                         check = true;
-                        Console.WriteLine("Dodawanie zespołu");
+                        Console.WriteLine("Podaj nazwę drużyny:");
+                        Team NewTeam = new Team();
+                        NewTeam.GetName();
+                        EditTeamList();
                         break;
                     case '2':
                         Console.Clear();
@@ -75,14 +76,15 @@ namespace Premier_League
         
         public static void DisplayEditionMenu()
         {
-            List<string> Menu = new List<string>();
-            Menu.Add("1. Dodaj zespół");
-            Menu.Add("2. Edytuj zespół");
-            Menu.Add("3. Usuń zespół");
-            Menu.Add("0. Wróc do poprzedniego menu");
-            for (int i = 0; i < Menu.Count; i++)
+            List<string> Menu = new List<string>()
+            { "1. Dodaj zespół",
+                "2. Edytuj zespół",
+                "3. Usuń zespół",
+                "0. Wróc do poprzedniego menu" };
+
+            foreach (string i in Menu)
             {
-                Console.WriteLine(Menu[i]);
+                Console.WriteLine(i);
             }
         }
 
@@ -98,12 +100,11 @@ namespace Premier_League
                     case '1':
                         Console.Clear();
                         check = true;
-                        Console.WriteLine("Tu bedzie tabela");
+                        DisplayTable();
                         break;
                     case '2':
                         Console.Clear();
                         check = true;
-                        //Console.WriteLine("Tu se bedziesz edytował liste teamow");
                         EditTeamList();
                         break;
                     case '3':
@@ -128,7 +129,12 @@ namespace Premier_League
             }
             while (!check);
 
-        } 
+        }   
         
+        public static void DisplayTable()
+        {
+            StreamReader sr = new StreamReader(DatabaseService.path);
+            Console.WriteLine(sr.ReadToEnd());
+        }
     }
 }

@@ -9,8 +9,8 @@ namespace Premier_League
 {
     static public class DatabaseService
     {
-        static string fileName = "premier_league.txt";
-        static public string path = "C:\\Projects\\Learning-stuff\\Premier League\\premier_league.txt";
+        // static string fileName = "premier_league.txt";
+        static public string path = @"C:\\Projects\\Learning-stuff\\Premier League\\premier_league.txt";
 
         static public void SaveDatabase()
         {
