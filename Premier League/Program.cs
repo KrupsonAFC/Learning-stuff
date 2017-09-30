@@ -14,7 +14,8 @@ namespace Premier_League
         {
             DisplayMenu();
             MakeChoice();
-            DatabaseService.SaveDatabase();            
+            DatabaseService.SaveDatabase();       
+            
         }
         
         public static void DisplayMenu()
@@ -34,6 +35,7 @@ namespace Premier_League
 
         public static void EditTeamList()
         {
+            List<string> Table = new List<string>();
             DisplayEditionMenu();
             bool check = false; 
             ConsoleKeyInfo number; 
@@ -57,8 +59,9 @@ namespace Premier_League
                         break;
                     case '3':
                         Console.Clear();
-                        check = true;
-                        Console.WriteLine("Usuwanie zespołu");
+                        check = true;                       
+                        DeleteTeam();
+                        EditTeamList();
                         break;
                     case '0':
                         Console.Clear();
@@ -100,7 +103,18 @@ namespace Premier_League
                     case '1':
                         Console.Clear();
                         check = true;
-                        DisplayTable();
+                        if (File.Exists(DatabaseService.path))
+                        {
+                            DisplayTable();
+                            DisplayMenu();
+                            MakeChoice();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nie dodano żadnych zespołów\n\n");
+                            DisplayMenu();
+                            MakeChoice();
+                        }
                         break;
                     case '2':
                         Console.Clear();
@@ -134,7 +148,47 @@ namespace Premier_League
         public static void DisplayTable()
         {
             StreamReader sr = new StreamReader(DatabaseService.path);
-            Console.WriteLine(sr.ReadToEnd());
+            Console.WriteLine(sr.ReadToEnd() + "\n\n");
+            sr.Close();
+        }
+
+        public static void DeleteTeam()
+        {
+            List<string> Table = ReadTable();
+            Console.WriteLine("Podaj nazwę zepołu do usunięcia\n" +
+                "Istniejące zespoły:\n\n");
+            DisplayTable();
+            string name = Console.ReadLine();
+            if (Table.Contains(name))
+            {
+                Table.Remove(name);
+                StreamWriter sw = new StreamWriter(DatabaseService.path);
+                foreach (string record in Table)
+                {
+                    sw.WriteLine(record);
+                }
+                sw.Close();
+                Console.Clear();
+                Console.WriteLine($"Usunięto zespół {name}\n\n");
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("W tabeli nie ma takiego zespołu\n\n");
+            }
+        }
+
+        public static List<string> ReadTable()
+        {
+            List<string> Table = new List<string>();
+            StreamReader sr = new StreamReader(DatabaseService.path);
+            while (sr.Peek() != -1)
+            {
+                Table.Add(sr.ReadLine());
+            }
+            sr.Close();
+
+            return Table;
         }
     }
 }

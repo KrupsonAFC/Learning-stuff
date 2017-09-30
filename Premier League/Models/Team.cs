@@ -12,15 +12,18 @@ namespace Premier_League
         public string Name { get; set; }
         public int Position { get; set; } //zasada: property z wielkiej litery znaczynamy
         public int Points { get; set; } //zasada: property z wielkiej litery znaczynamy
+        
 
         public void GetName()
-        {
-            Name = Console.ReadLine();
-            StreamWriter sw = new StreamWriter(DatabaseService.path, true);
-            sw.WriteLine(Name);
+        {            
+            Name = Console.ReadLine();           
+            StreamWriter sw = new StreamWriter(DatabaseService.path, true);           
+            sw.WriteLine(Name);            
             sw.Close();
             Console.Clear();
-            Console.WriteLine($"Dodano zespół {Name}\n\n");            
+            Console.WriteLine($"Dodano zespół {Name}\n\n");
         }
+
+       
     }
 }
